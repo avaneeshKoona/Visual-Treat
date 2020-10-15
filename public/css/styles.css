@@ -1,22 +1,23 @@
-body{
+body{   
     background-color: #FFF;
     font-family: cursive;
+    display: grid;
 }
 
 .heading{
     color: rgb(0, 0, 0);
     text-align: center ;
-    font-size: 4rem;
+    font-size: 3rem;
+    margin-top: 10px;
 }
 
 
-
-#mergePlate{
-    display: flex;
-    justify-content: center;
+.mainForm{
+    display: grid;
 }
 
 #btn{
+    margin: auto;
     padding:10px 15px;
     border-radius: 5px;
     border: none;
@@ -31,18 +32,40 @@ body{
 }
 
 
+
+#sortTypes{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px 0;
+}
+
+.sortType{
+
+    margin: 0px 20px;
+
+}
+
+#arrayWindow{
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+
 .ele{
-    display:inline-block;
+    display:flex;
+    align-items: flex-end;
+    justify-content: center;
     width: 20px;
-    /* height: 100px; */
     background-color: rgba(247, 231, 7, 0.651);
     margin: 2px;
     font-size: x-small;
-    text-align: center;
 }
 
-#sort{
-    margin:30px 50%;
+#sortBtn{
+    margin:auto;
     padding:10px 15px;
     border-radius: 5px;
     border: none;
@@ -50,7 +73,12 @@ body{
     color: white;
 }
 
-#sort:hover{
+#sortBtn:hover{
     background-color:black;
     color: white;
 }
+
+#sortBtn:disabled{
+    background-color: rgba(0, 0, 0, 0.466);
+}
+

@@ -18,6 +18,10 @@ app.get("/", function(req, res) {
   res.render("home");
   })
 
+app.post("/",function(req,res){
+  res.render("sorting");
+})  
+
   app.listen(3000, function() {
     console.log("The server is running on port 3000");
   })

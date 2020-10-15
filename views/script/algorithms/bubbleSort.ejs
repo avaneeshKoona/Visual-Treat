@@ -1,0 +1,46 @@
+
+// BUBBLE SORT IMPLEMENTATION //
+
+async function bubbleSort()
+{
+    for (var i=0; i < arr.length; i++)
+    {
+        var temp;
+        for(var j=0; j+1 < (arr.length-i); j++)
+        {
+            document.getElementById("div"+j).style.backgroundColor = "orange";
+            document.getElementById("div"+(j+1)).style.backgroundColor = "orange";
+            await new Promise((resolve, reject) => setTimeout(resolve, SPEED));
+            if(arr[j] > arr[j+1])
+            {
+                document.getElementById("div"+j).style.backgroundColor = "red";
+                document.getElementById("div"+(j+1)).style.backgroundColor = "red";
+                await new Promise((resolve, reject) => setTimeout(resolve, SPEED));
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+                document.getElementById("div"+j).style.height = arr[j]*10+"px";
+                document.getElementById("div"+j).innerHTML = arr[j];
+                document.getElementById("div"+(j+1)).style.height = arr[j+1]*10+"px";
+                document.getElementById("div"+(j+1)).innerHTML = arr[j+1];
+            }
+            document.getElementById("div"+j).style.backgroundColor = "green";
+            document.getElementById("div"+(j+1)).style.backgroundColor = "green";
+            await new Promise((resolve, reject) => setTimeout(resolve, SPEED));
+            document.getElementById("div"+j).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
+            if((j+1) != (arr.length-i-1))
+             document.getElementById("div"+(j+1)).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
+            else
+             document.getElementById("div"+(j+1)).style.backgroundColor = "rgba(8, 255, 41, 0.534)"; 
+        }
+        if(i+1==arr.length)
+         document.getElementById("div0").style.backgroundColor = "rgba(8, 255, 41, 0.534)";
+    }
+
+for(var i=0; i < arr.length; i++)
+{
+    document.getElementById("div"+i).style.backgroundColor = "rgb(187, 255, 0)";
+    await new Promise((resolve, reject) => setTimeout(resolve, SPEED));
+}
+
+}

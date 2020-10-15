@@ -1,0 +1,22 @@
+<%-include("partials/header")%>
+<h1 class="heading">GO FOR IT!!</h1>
+<div id="sortTypes">
+    <div class="sortType">
+        <input type="radio" name="sortType" value="bubbleSort">
+        <label for="bubbleSort">Bubble Sort</label>
+    </div>
+    <div class="sortType">
+        <input type="radio" name="sortType" value="insertionSort">
+        <label for="insertionSort">Insertion sort</label>
+    </div>
+    <div class="sortType">
+        <input type="radio" id="mergeSort" name="sortType" value="mergeSort">
+        <label for="mergeSort">Merge sort(Recursive)</label>
+    </div>
+</div>
+    <div id="arrayWindow">
+            <button id="btn" onclick="generateArray()">Generate Array</button>
+    </div>  
+
+    <%-include("script/sort_script")%>     
+<%-include("partials/footer")%>
