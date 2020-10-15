@@ -1,0 +1,75 @@
+
+<script> 
+
+
+// CODE BY: AVANEESH KOONA
+// GIHUB: https://github.com/avaneeshKoona
+// GMAIL: kavaneesh19@gmail.com
+
+
+
+  var arr = [];
+  const SPEED = 20;
+  while(arr.length < 40){
+    var r = Math.floor(Math.random() * 50) + 1;
+    if(arr.indexOf(r) === -1) arr.push(r);
+  } 
+
+
+    function run(){  //run function
+
+      document.getElementsByClassName("heading")[0].innerHTML="GO FOR IT!!"
+      document.getElementById("mergePlate").style.height="500px";
+
+    let node = document.getElementById("btn");
+    if(node!=null)
+    {
+      if (node.parentNode) {
+    node.parentNode.removeChild(node);
+   }
+    }
+
+   for(var i=0;i<40;i++)
+     {
+        task(i);
+     }
+
+    function task(i){
+     setTimeout(function() { 
+      let p = document.createElement("div");
+      var att2 = document.createAttribute("class");
+      att2.value = "ele";
+      p.setAttributeNode(att2);
+      var att3 = document.createAttribute("id");
+      att3.value = "div"+i.toString();
+      p.setAttributeNode(att3);
+      document.getElementById("mergePlate").appendChild(p);
+      document.getElementById(att3.value).innerHTML = arr[i];
+      document.getElementById(att3.value).style.height = arr[i]*10+"px";
+     },17*i);
+    }
+
+     let s=document.createElement("button");
+     var att4 = document.createAttribute("id");
+     att4.value = "sort";
+     s.setAttributeNode(att4);
+     var att4 = document.createAttribute("onclick");
+     att4.value ="merges(0,39)";
+     s.setAttributeNode(att4);
+     
+     document.body.appendChild(s);
+     document.getElementById("sort").innerHTML = "SORT";
+}
+
+
+async function merges(l,h){
+    await merge(l,h);
+    document.getElementsByClassName("heading")[0].innerHTML = "YOU DID IT :)"
+    console.log(arr);
+    flag=0;
+}
+
+<%-include("merge")%> 
+
+</script>
+

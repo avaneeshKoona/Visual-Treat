@@ -1,0 +1,68 @@
+async function merge(l,h)
+{
+    document.getElementsByClassName("heading")[0].innerHTML="PROCESSING...";
+    if(l===h)
+        return;    
+
+    var mid = Math.floor((l+h)/2);
+    await merge(l,mid);
+    await merge(mid+1,h);
+    await merge_sort(l,mid,h);
+}
+
+
+
+async function merge_sort(l,mid,h)
+{
+        var p1=l, p2=mid+1, k=0;
+        var temp = new Array(h-l+1);
+        while(p1 <= mid && p2 <= h)
+        {
+            document.getElementById("div"+p1).style.backgroundColor = "rgba(255, 0, 0, 0.781)";
+            document.getElementById("div"+p2).style.backgroundColor = "rgba(255, 0, 0, 0.781)";
+            await new Promise((resolve, reject) => setTimeout(resolve, SPEED));
+
+                if(arr[p1] < arr[p2])
+                {
+                    document.getElementById("div"+p1).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
+                    document.getElementById("div"+p2).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
+                    temp[k++]=arr[p1++];
+                }
+                else
+                {
+                    document.getElementById("div"+p1).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
+                    document.getElementById("div"+p2).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
+                    temp[k++]=arr[p2++];
+                }
+        }
+
+        while(p1 <= mid)
+        {
+            document.getElementById("div"+p1).style.backgroundColor = "rgba(255, 0, 0, 0.781)";
+            await new Promise((resolve, reject) => setTimeout(resolve, SPEED));
+            document.getElementById("div"+p1).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
+            temp[k++]=arr[p1++];
+        }
+        
+        while(p2 <= h)
+        {
+            document.getElementById("div"+p2).style.backgroundColor = "rgba(255, 0, 0, 0.781)";
+            await new Promise((resolve, reject) => setTimeout(resolve, SPEED));   
+            document.getElementById("div"+p2).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
+            temp[k++]=arr[p2++];    
+        }
+        
+        k=0;
+        for(var i=l; i<=h; i++)
+        {
+            arr[i]=temp[k++];
+            document.getElementById("div"+i).style.backgroundColor = "rgba(0, 0, 255, 0.712)";
+            await new Promise((resolve, reject) => setTimeout(resolve, SPEED));
+            document.getElementById("div"+i).innerHTML = arr[i];
+            document.getElementById("div"+i).style.height = arr[i]*10+"px";
+            if(temp.length!=40)
+                document.getElementById("div"+i).style.backgroundColor = " rgba(8, 255, 41, 0.534)";
+            else
+                document.getElementById("div"+i).style.backgroundColor = "rgb(187, 255, 0)";
+        }
+}
