@@ -1,0 +1,42 @@
+
+//SELECTION SORT IMPLEMENTATION//
+
+async function selectionSort()
+{
+    var min,i,j,temp;
+    for(i=0; i < arr.length; i++)
+    {
+      document.getElementById("div"+i).style.backgroundColor = "rgba(0, 0, 255, 0.671)";
+      min=i;
+      for(j=i+1; j < arr.length; j++)
+      {
+        document.getElementById("div"+j).style.backgroundColor = "orange";
+        await new Promise((resolve, reject) => setTimeout(resolve, SPEED));
+          if(arr[j] < arr[min])
+          { 
+           document.getElementById("div"+min).style.backgroundColor = "rgba(247, 231, 7, 0.651)"
+           document.getElementById("div"+i).style.backgroundColor = "rgba(0, 0, 255, 0.712";      
+           min=j;
+           document.getElementById("div"+min).style.backgroundColor = "orange";
+          }
+          if(j!=min)
+           document.getElementById("div"+j).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
+      }
+      temp=arr[min];
+      arr[min]=arr[i];
+      document.getElementById("div"+min).style.height = arr[min]*10+"px";
+      document.getElementById("div"+min).innerHTML = arr[min];
+      document.getElementById("div"+min).style.backgroundColor = "rgba(247, 231, 7, 0.651)"
+      arr[i]=temp;
+      document.getElementById("div"+i).style.height = arr[i]*10+"px";
+      document.getElementById("div"+i).innerHTML = arr[i];
+      document.getElementById("div"+i).style.backgroundColor = "rgba(8, 255, 41, 0.534)"
+    } 
+
+    for(var i=0; i < arr.length; i++)
+    {
+        document.getElementById("div"+i).style.backgroundColor = "rgb(187, 255, 0)";
+        await new Promise((resolve, reject) => setTimeout(resolve, SPEED));
+    }
+
+}

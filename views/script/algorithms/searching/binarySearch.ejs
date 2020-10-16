@@ -1,0 +1,21 @@
+//BINARY SEARCH IMPLEMENTATION//
+
+async function binarySearch(l,h,key)
+{
+    var mid = Math.floor((l+h)/2);
+
+    if(l>h)
+     return;
+
+    if(arr[mid] == key)
+      {
+          document.getElementById("div"+mid).style.backgroundColor = "green";
+          return;
+      }
+    
+      if(key < arr[mid])
+      { 
+        return binarySearch(l,mid-1,key);
+      }
+      return binarySearch(mid+1,h,key);  
+}

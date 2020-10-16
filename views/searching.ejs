@@ -1,0 +1,21 @@
+<%-include("partials/header")%>
+<h1 class="heading">GO FOR IT!!</h1>
+<div id="algoTypes">
+    <div class="algoType">
+        <input type="radio" name="searchType" value="linearSearch">
+        <label for="linear">Linear search</label>
+    </div>
+    <div class="algoType">
+        <input type="radio" name="searchType" value="binarySearch">
+        <label for="linear">Binary search</label>
+    </div>
+</div>
+    <div id="arrayWindow"></div>    
+    <div id="btnWindow">
+        <button class="Button" id="generateArray" onclick="generateArray()">Generate New Array</button> 
+        <button class="Button" id="startBtn" onclick="search()">Search</button>
+        <label for="key">Search key</label><input type="text" name="key" id="key" placeholder="key to search [1,40]"> 
+    </div> 
+
+    <%-include("script/algoScript")%>     
+<%-include("partials/footer")%>

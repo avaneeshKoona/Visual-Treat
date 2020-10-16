@@ -3,7 +3,6 @@
 
 async function merge(l,h) // divides the main array into smaller parts
 {
-    document.getElementsByClassName("heading")[0].innerHTML="PROCESSING...";
     if(l===h)
         return;    
 
@@ -21,8 +20,8 @@ async function merge_sort(l,mid,h)    // sort and merges the smaller parts
         var temp = new Array(h-l+1);
         while(p1 <= mid && p2 <= h)
         {
-            document.getElementById("div"+p1).style.backgroundColor = "rgba(255, 0, 0, 0.781)";
-            document.getElementById("div"+p2).style.backgroundColor = "rgba(255, 0, 0, 0.781)";
+            document.getElementById("div"+p1).style.backgroundColor = "orange";
+            document.getElementById("div"+p2).style.backgroundColor = "orange";
             await new Promise((resolve, reject) => setTimeout(resolve, SPEED));
 
                 if(arr[p1] < arr[p2])
@@ -41,7 +40,7 @@ async function merge_sort(l,mid,h)    // sort and merges the smaller parts
 
         while(p1 <= mid)
         {
-            document.getElementById("div"+p1).style.backgroundColor = "rgba(255, 0, 0, 0.781)";
+            document.getElementById("div"+p1).style.backgroundColor = "orange";
             await new Promise((resolve, reject) => setTimeout(resolve, SPEED));
             document.getElementById("div"+p1).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
             temp[k++]=arr[p1++];
@@ -49,7 +48,7 @@ async function merge_sort(l,mid,h)    // sort and merges the smaller parts
         
         while(p2 <= h)
         {
-            document.getElementById("div"+p2).style.backgroundColor = "rgba(255, 0, 0, 0.781)";
+            document.getElementById("div"+p2).style.backgroundColor = "orange";
             await new Promise((resolve, reject) => setTimeout(resolve, SPEED));   
             document.getElementById("div"+p2).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
             temp[k++]=arr[p2++];    

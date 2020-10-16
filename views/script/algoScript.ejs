@@ -1,0 +1,187 @@
+<script> 
+
+  /*
+  *************************************************
+      CODE BY : AVANEESH KOONA
+      GIHUB   : https://github.com/avaneeshKoona
+      E-MAIL  : kavaneesh19@gmail.com
+  *************************************************
+*/
+
+  var arr = []; //Globally declared array
+  const SPEED = 100;
+
+  while(arr.length < 40){
+    var r = Math.floor(Math.random() * 50) + 1;
+    if(arr.indexOf(r) === -1) arr.push(r);
+  } 
+
+  window.onload =  function() {
+    generateArray();
+  }
+
+
+  async function generateArray(){  // generateArray function
+
+
+    var eleClass = document.getElementById("div0");
+    if(eleClass!=null)
+    {
+      for(var i=0; i < arr.length; i++)
+      {
+        document.getElementById("div"+i).remove();
+      }
+
+      arr = [];
+
+      while(arr.length < 40){
+       var r = Math.floor(Math.random() * 50) + 1;
+       if(arr.indexOf(r) === -1) arr.push(r);
+      }    
+      
+      document.getElementsByClassName("heading")[0].innerHTML = "GO FOR IT !!";
+
+    }
+
+
+      for(var i=0;i<40;i++)
+    {
+      await addBars(i);  // function to append bars to the arrayWindow
+    }
+
+  }
+
+
+  async function addBars(i)
+  {
+      await setTimeout(function() { 
+        let newBar = document.createElement("div");
+        newBar.setAttribute("class", "ele");
+
+        newBar.setAttribute("id", "div"+i);
+
+        document.getElementById("arrayWindow").appendChild(newBar);
+        document.getElementById("div"+i).innerHTML = arr[i];
+        document.getElementById("div"+i).style.height = arr[i]*10+"px";
+      },25*i);
+  }
+
+
+  async function helperSort(){
+  await arr.sort(function(a,b){return a-b});
+  for(var i=0;i<arr.length;i++)
+  {
+    document.getElementById("div"+i).style.height = arr[i]*10+"px";
+    document.getElementById("div"+i).innerHTML = arr[i];
+  }
+}
+
+
+//SEARCHING IMPLEMENTATION//
+
+async function search()
+{
+  var key = document.getElementById("key");
+  var chosenMethod = document.getElementsByName("searchType");
+  var sortMethod;
+    for(var i=0; i<chosenMethod.length;i++)
+    {
+      if(chosenMethod[i].checked)
+      {
+        sortMethod = chosenMethod[i].value;
+      }
+    } 
+
+  if(key.value=="")
+  {
+    alert("please give a key to search");
+    return;
+  }
+ 
+ switch(sortMethod)
+ {
+    case "linearSearch":
+      linearSearch(parseInt(key.value,10));
+      break;
+    case "binarySearch":
+      await helperSort();
+      binarySearch(0,39,parseInt(key.value,10));
+      break;
+    default:
+      alert("please choose a method to search :)");
+      break;    
+ }
+
+}
+
+<%-include("algorithms/searching/linearSearch")%>
+<%-include("algorithms/searching/binarySearch")%>
+
+
+
+// SORTING IMPLEMENTATION//
+  
+  async function sort(l,h)
+  {
+    var chosenMethod = document.getElementsByName("sortType");
+    var sortMethod;
+    for(var i=0; i<chosenMethod.length;i++)
+    {
+      if(chosenMethod[i].checked)
+      {
+        sortMethod = chosenMethod[i].value;
+      }
+    }
+
+    document.getElementById("generateArray").disabled = true;
+    document.getElementById("startBtn").disabled = true;
+
+    switch(sortMethod)
+    {
+      case "bubbleSort":
+        document.getElementsByClassName("heading")[0].innerHTML="PROCESSING...";
+        await bubbleSort();
+        document.getElementsByClassName("heading")[0].innerHTML = "YOU DID IT :)"
+        console.log(arr);
+        break;
+
+      case "insertionSort":
+        document.getElementsByClassName("heading")[0].innerHTML="PROCESSING...";
+        await insertionSort();
+        document.getElementsByClassName("heading")[0].innerHTML = "YOU DID IT :)"
+        console.log(arr);
+        break;
+
+      case "selectionSort":
+        document.getElementsByClassName("heading")[0].innerHTML="PROCESSING...";
+        await selectionSort();
+        document.getElementsByClassName("heading")[0].innerHTML = "YOU DID IT :)"
+        console.log(arr);
+        break;  
+
+      case "mergeSort": 
+        document.getElementsByClassName("heading")[0].innerHTML="PROCESSING...";
+        await merge(l,h);
+        document.getElementsByClassName("heading")[0].innerHTML = "YOU DID IT :)"
+        console.log(arr);
+        break;
+
+      default: 
+        alert("please choose a sorting method :)");
+        break;
+    }
+
+    document.getElementById("generateArray").disabled = false;
+    document.getElementById("startBtn").disabled = false;
+
+  }
+
+<%-include("algorithms/sorting/bubbleSort")%>
+<%-include("algorithms/sorting/insertionSort")%> 
+<%-include("algorithms/sorting/selectionSort")%> 
+<%-include("algorithms/sorting/mergeSort")%> 
+
+
+
+</script>
+

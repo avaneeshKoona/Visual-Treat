@@ -7,8 +7,7 @@ async function insertionSort()
     for(i=0;i < arr.length; i++)
     {
       key = arr[i];
-      <!-- document.getElementById("div"+i).style.backgroundColor = "rgba(255, 0, 0, 0.781)" -->
-      document.getElementById("div"+i).style.backgroundColor = "rgba(255, 0, 0, 0.781)"
+      document.getElementById("div"+i).style.backgroundColor = "rgba(255, 0, 0, 0.781)";
       await new Promise((resolve, reject) => setTimeout(resolve, SPEED));
       document.getElementById("div"+i).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
       for(j=i-1; j >= 0&&key < arr[j]; j--)
@@ -19,6 +18,7 @@ async function insertionSort()
         arr[j+1]=arr[j];
         document.getElementById("div"+(j+1)).style.height = arr[j+1]*10+"px";
         document.getElementById("div"+(j+1)).innerHTML = arr[j+1];
+        await new Promise((resolve, reject) => setTimeout(resolve, SPEED));
         document.getElementById("div"+(j+1)).style.backgroundColor = "rgba(8, 255, 41, 0.534)";
         await new Promise((resolve, reject) => setTimeout(resolve, SPEED));
         document.getElementById("div"+(j+1)).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
