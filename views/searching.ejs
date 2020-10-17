@@ -1,5 +1,8 @@
 <%-include("partials/header")%>
-<h1 class="heading">GO FOR IT!!</h1>
+<div class="main">
+    <h3 id="homeLink"><a href="/">VISUAL TREAT</a></h3>
+    <h1 class="heading">GO FOR IT!!</h1>
+</div>
 <div id="algoTypes">
     <div class="algoType">
         <input type="radio" name="searchType" value="linearSearch">
@@ -13,8 +16,12 @@
     <div id="arrayWindow"></div>    
     <div id="btnWindow">
         <button class="Button" id="generateArray" onclick="generateArray()">Generate New Array</button> 
+        <label for="key">key</label><input type="text" name="key" id="key" placeholder="key to search [1,50]"> 
         <button class="Button" id="startBtn" onclick="search()">Search</button>
-        <label for="key">Search key</label><input type="text" name="key" id="key" placeholder="key to search [1,40]"> 
+        <div>
+            <div>speed</div>
+            <input type="range" id="speed" name="speed" min="17" max="350">
+        </div> 
     </div> 
 
     <%-include("script/algoScript")%>     

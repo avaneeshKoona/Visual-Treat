@@ -2,20 +2,35 @@
 
 async function binarySearch(l,h,key)
 {
-    var mid = Math.floor((l+h)/2);
+  if(l>h)
+    return false;
+  document.getElementById("div"+l).style.backgroundColor = "rgba(0, 0, 255, 0.712)";
+  document.getElementById("div"+h).style.backgroundColor = "rgba(0, 0, 255, 0.712)";
+  await new Promise((resolve,reject)=>setTimeout(resolve,SPEED));
+  var mid = Math.floor((l+h)/2);
+  document.getElementById("div"+mid).style.backgroundColor = "orange";
+  await new Promise((resolve,reject)=>setTimeout(resolve,SPEED));
 
-    if(l>h)
-     return;
-
-    if(arr[mid] == key)
-      {
-          document.getElementById("div"+mid).style.backgroundColor = "green";
-          return;
-      }
+  if(arr[mid] == key)
+  {
+    if(l!=h)
+    {
+      document.getElementById("div"+l).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
+      document.getElementById("div"+h).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
+    }
+    document.getElementById("div"+mid).style.backgroundColor = "green";
+    return true;
+  }
+  document.getElementById("div"+mid).style.backgroundColor = "red";
+  await new Promise((resolve,reject)=>setTimeout(resolve,SPEED));
+  document.getElementById("div"+mid).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
+  await new Promise((resolve,reject)=>setTimeout(resolve,SPEED));
+  document.getElementById("div"+l).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
+  document.getElementById("div"+h).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
     
-      if(key < arr[mid])
-      { 
-        return binarySearch(l,mid-1,key);
-      }
-      return binarySearch(mid+1,h,key);  
+  if(key < arr[mid])
+  { 
+    return binarySearch(l,mid-1,key);
+  }
+  return binarySearch(mid+1,h,key);  
 }

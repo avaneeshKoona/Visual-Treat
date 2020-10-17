@@ -1,5 +1,8 @@
 <%-include("partials/header")%>
-<h1 class="heading">GO FOR IT!!</h1>
+<div class="main">
+    <h3 id="homeLink"><a href="/">VISUAL TREAT</a></h3>
+    <h1 class="heading">GO FOR IT!!</h1>
+</div>
 <div id="algoTypes">
     <div class="algoType">
         <input type="radio" name="sortType" value="bubbleSort">
@@ -18,10 +21,16 @@
         <label for="mergeSort">Merge sort(Recursive)</label>
     </div>
 </div>
-    <div id="arrayWindow"></div>    
+<div id="container">
+    <div id="arrayWindow"></div> 
+</div>   
     <div id="btnWindow">
         <button class="Button" id="generateArray" onclick="generateArray()">Generate New Array</button> 
-        <button class="Button" id="startBtn" onclick="sort(0,39)">SORT</button> 
+        <button class="Button" id="startBtn" onclick="sort(0,39)">SORT</button>
+        <div>
+            <div>speed</div>
+            <input type="range" id="speed" name="speed" min="17" max="350">
+        </div> 
     </div> 
 
     <%-include("script/algoScript")%>     

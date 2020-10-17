@@ -1,5 +1,4 @@
 <script> 
-
   /*
   *************************************************
       CODE BY : AVANEESH KOONA
@@ -8,22 +7,28 @@
   *************************************************
 */
 
-  var arr = []; //Globally declared array
-  const SPEED = 100;
+var arr = [];   //Globally declared array
+
+var speedSlider = document.getElementById("speed"); 
+var SPEED = 367-parseInt(speedSlider.value,10);
+
+speedSlider.addEventListener("change", function () {
+  SPEED = 367-parseInt(speedSlider.value,10);
+  console.log(SPEED);
+});
+
 
   while(arr.length < 40){
     var r = Math.floor(Math.random() * 50) + 1;
     if(arr.indexOf(r) === -1) arr.push(r);
   } 
 
-  window.onload =  function() {
-    generateArray();
+  window.onload =  async function() {
+    await generateArray();
   }
 
 
   async function generateArray(){  // generateArray function
-
-
     var eleClass = document.getElementById("div0");
     if(eleClass!=null)
     {
@@ -43,19 +48,12 @@
 
     }
 
+    document.getElementById("generateArray").disabled = true;
+    document.getElementById("startBtn").disabled = true;
 
       for(var i=0;i<40;i++)
     {
-      await addBars(i);  // function to append bars to the arrayWindow
-    }
-
-  }
-
-
-  async function addBars(i)
-  {
-      await setTimeout(function() { 
-        let newBar = document.createElement("div");
+      let newBar = document.createElement("div");
         newBar.setAttribute("class", "ele");
 
         newBar.setAttribute("id", "div"+i);
@@ -63,58 +61,101 @@
         document.getElementById("arrayWindow").appendChild(newBar);
         document.getElementById("div"+i).innerHTML = arr[i];
         document.getElementById("div"+i).style.height = arr[i]*10+"px";
-      },25*i);
+        await new Promise((resolve,reject) => setTimeout(resolve,17));
+    }
+    document.getElementById("generateArray").disabled = false;
+    document.getElementById("startBtn").disabled = false;
+    
   }
 
-
-  async function helperSort(){
-  await arr.sort(function(a,b){return a-b});
-  for(var i=0;i<arr.length;i++)
-  {
-    document.getElementById("div"+i).style.height = arr[i]*10+"px";
-    document.getElementById("div"+i).innerHTML = arr[i];
-  }
-}
 
 
 //SEARCHING IMPLEMENTATION//
 
 async function search()
 {
-  var key = document.getElementById("key");
+  var key = document.getElementById("key").value;
   var chosenMethod = document.getElementsByName("searchType");
-  var sortMethod;
+  var searchMethod;
+
     for(var i=0; i<chosenMethod.length;i++)
     {
       if(chosenMethod[i].checked)
       {
-        sortMethod = chosenMethod[i].value;
+        searchMethod = chosenMethod[i].value;
       }
     } 
 
-  if(key.value=="")
+
+  if(key==""||searchMethod==null)
   {
-    alert("please give a key to search");
+    if(key==""&&searchMethod==null)
+      alert("please choose a Search method and also give a key to search :)");
+    else if(searchMethod==null) 
+      alert("please choose a Search method :)"); 
+    else
+      alert("please give a key to search :)");
     return;
   }
+
+  if(isNaN(parseInt(key,10)))
+  {
+    alert("key must be a number :)");
+    return;
+  }
+
+  for(var i=0; i < arr.length; i++)
+  {
+    var color = document.getElementById("div"+i).style.backgroundColor;
+    if(color == "green")
+    {
+      document.getElementById("div"+i).style.backgroundColor =  "rgba(247, 231, 7, 0.651)";
+      break;
+    }
+  }
+
+
+  document.getElementsByClassName("heading")[0].innerHTML="PROCESSING...";
+  document.getElementById("generateArray").disabled = true;
+  document.getElementById("startBtn").disabled = true;
+
+  var verdict;
  
- switch(sortMethod)
+ switch(searchMethod)
  {
     case "linearSearch":
-      linearSearch(parseInt(key.value,10));
+      verdict = await linearSearch(parseInt(key,10));
       break;
     case "binarySearch":
       await helperSort();
-      binarySearch(0,39,parseInt(key.value,10));
+      verdict = await binarySearch(0,39,parseInt(key,10));
       break;
     default:
       alert("please choose a method to search :)");
       break;    
  }
+ 
+ if(verdict==true)
+  document.getElementsByClassName("heading")[0].innerHTML="FOUND IT :)";
+ else
+  document.getElementsByClassName("heading")[0].innerHTML="NOT FOUND :(";
+ document.getElementById("generateArray").disabled = false;
+ document.getElementById("startBtn").disabled = false;
 
 }
 
-<%-include("algorithms/searching/linearSearch")%>
+async function helperSort()
+  {
+    await arr.sort(function(a,b){return a-b});
+    for(var i=0;i<arr.length;i++)
+    {
+      document.getElementById("div"+i).style.height = arr[i]*10+"px";
+      document.getElementById("div"+i).innerHTML = arr[i];
+      await new Promise((resolve,reject) => setTimeout(resolve,17));
+    }
+  }
+
+<%-include("algorithms/searching/linearSearch")%> 
 <%-include("algorithms/searching/binarySearch")%>
 
 
@@ -125,6 +166,7 @@ async function search()
   {
     var chosenMethod = document.getElementsByName("sortType");
     var sortMethod;
+
     for(var i=0; i<chosenMethod.length;i++)
     {
       if(chosenMethod[i].checked)
@@ -133,44 +175,41 @@ async function search()
       }
     }
 
+    if(sortMethod==null)
+  {
+    alert("please choose a sorting method :)");
+    return;
+  }
+
+    document.getElementsByClassName("heading")[0].innerHTML="PROCESSING...";
     document.getElementById("generateArray").disabled = true;
     document.getElementById("startBtn").disabled = true;
 
     switch(sortMethod)
     {
       case "bubbleSort":
-        document.getElementsByClassName("heading")[0].innerHTML="PROCESSING...";
-        await bubbleSort();
-        document.getElementsByClassName("heading")[0].innerHTML = "YOU DID IT :)"
+        await bubbleSort(); 
         console.log(arr);
         break;
 
       case "insertionSort":
-        document.getElementsByClassName("heading")[0].innerHTML="PROCESSING...";
         await insertionSort();
-        document.getElementsByClassName("heading")[0].innerHTML = "YOU DID IT :)"
-        console.log(arr);
         break;
 
       case "selectionSort":
-        document.getElementsByClassName("heading")[0].innerHTML="PROCESSING...";
         await selectionSort();
-        document.getElementsByClassName("heading")[0].innerHTML = "YOU DID IT :)"
-        console.log(arr);
         break;  
 
       case "mergeSort": 
-        document.getElementsByClassName("heading")[0].innerHTML="PROCESSING...";
         await merge(l,h);
-        document.getElementsByClassName("heading")[0].innerHTML = "YOU DID IT :)"
-        console.log(arr);
         break;
 
       default: 
         alert("please choose a sorting method :)");
         break;
     }
-
+    console.log(arr);
+    document.getElementsByClassName("heading")[0].innerHTML = "YOU DID IT :)"
     document.getElementById("generateArray").disabled = false;
     document.getElementById("startBtn").disabled = false;
 
@@ -180,8 +219,6 @@ async function search()
 <%-include("algorithms/sorting/insertionSort")%> 
 <%-include("algorithms/sorting/selectionSort")%> 
 <%-include("algorithms/sorting/mergeSort")%> 
-
-
 
 </script>
 

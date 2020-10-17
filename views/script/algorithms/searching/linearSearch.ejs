@@ -1,6 +1,5 @@
 async function linearSearch(key)
 {
-    console.log("entered linear search");
     for(var i=0;i < arr.length; i++)
     {
         document.getElementById("div"+i).style.backgroundColor = "orange";
@@ -8,11 +7,12 @@ async function linearSearch(key)
         if(arr[i]==key)
         {
             document.getElementById("div"+i).style.backgroundColor = "green";
-            break;
+            return true;
         }
         await new Promise((resolve,reject) => setTimeout(resolve,SPEED));
         document.getElementById("div"+i).style.backgroundColor =  "red";
         await new Promise((resolve,reject) => setTimeout(resolve,SPEED));
         document.getElementById("div"+i).style.backgroundColor =  "rgba(247, 231, 7, 0.651)";
     }
+    return false;
 }

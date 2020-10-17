@@ -4,20 +4,38 @@ body{
     display: grid;
 }
 
+.main{
+    display: grid;
+    justify-content: center;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.034);
+}
+
+#homeLink{
+    position: absolute;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+#homeLink a{
+    text-decoration: none;
+    color: black;
+}
+
 .heading{
     color: rgb(0, 0, 0);
     text-align: center ;
     font-size: 3rem;
-    margin-top: 10px;
+    margin:15px 0;
 }
 
 #algorithmTypes{
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 85vh;
 }
 
 .algorithmType{
-    width:10%;
     margin:0 20px;
 }
 
@@ -31,24 +49,25 @@ body{
 }
 
 .Button:hover{
-    background-color:black;
-    color: white;
+    transform: scale(1.05);
 }
 
 .Button:focus{
-    outline: none;
-    box-shadow: 0 0 0 3px lightskyblue;
+    box-shadow: blue;
 }
 
-.algorithmType button{
-    width: 100%;
+.Button:active{
+    outline: none;
+    background-color:black;
 }
+
 
 
 #algoTypes{
     display: flex;
     justify-content: center;
-    margin-bottom: 15px 0;
+    align-items: center;
+    margin-top: 15px;
 }
 
 .algoType{
@@ -56,6 +75,7 @@ body{
     margin: 0px 20px;
 
 }
+
 
 #arrayWindow{
     height: 500px;
@@ -76,6 +96,14 @@ body{
     font-size: x-small;
 }
 
+#colorScheme{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    margin: 20px;
+}
+
+
 
 #btnWindow{
     display: flex;
@@ -88,5 +116,5 @@ body{
 
 #startBtn:disabled,#generateArray:disabled{
     background-color: rgba(0, 0, 0, 0.253);
+    transform: scale(0.95);
 }
-
