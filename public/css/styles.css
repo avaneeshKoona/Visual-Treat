@@ -1,6 +1,8 @@
 body{   
     background-color: #FFF;
-    font-family: cursive;
+    font-family: monospace;
+    font-family:"Courier New", Courier, monospace;
+    font-weight: bold;
     display: grid;
 }
 
@@ -24,8 +26,11 @@ body{
 .heading{
     color: rgb(0, 0, 0);
     text-align: center ;
-    font-size: 3rem;
+    font-size: 4rem;
     margin:15px 0;
+}
+
+h2{
 }
 
 #algorithmTypes{
@@ -73,7 +78,6 @@ body{
 .algoType{
 
     margin: 0px 20px;
-
 }
 
 
@@ -95,15 +99,6 @@ body{
     margin: 2px;
     font-size: x-small;
 }
-
-#colorScheme{
-    display: flex;
-    justify-content:space-around;
-    align-items: center;
-    margin: 20px;
-}
-
-
 
 #btnWindow{
     display: flex;
