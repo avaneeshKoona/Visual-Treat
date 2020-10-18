@@ -1,115 +1,175 @@
-body{   
-    background-color: #FFF;
-    font-family: monospace;
-    font-family:"Courier New", Courier, monospace;
-    font-weight: bold;
-    display: grid;
+/* 
+  *************************************************
+  CODE BY : AVANEESH KOONA
+  GIHUB   : https://github.com/avaneeshKoona
+  E-MAIL  : kavaneesh19@gmail.com
+************************************************* */
+
+
+/* common css for home, searching and sorting pages*/
+
+html{
+    font-family: sans-serif;
 }
 
-.main{
-    display: grid;
-    justify-content: center;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.034);
+body{
+    margin: 0;
+    height: 100vh;
 }
 
-#homeLink{
-    position: absolute;
-    margin-left: 20px;
-    margin-top: 20px;
+.home{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-#homeLink a{
-    text-decoration: none;
+
+header{
+    width: 100%;
+    padding:2%;
+    background-color: rgba(0, 0, 0, 0.267);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.089);
+}
+
+header h1{
+    font-size: 1.5rem;
+}
+
+.homeLink{
     color: black;
 }
 
-.heading{
-    color: rgb(0, 0, 0);
-    text-align: center ;
-    font-size: 4rem;
-    margin:15px 0;
+.homeLink:active{
+    text-decoration: none;
 }
 
-h2{
-}
-
-#algorithmTypes{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 85vh;
-}
-
-.algorithmType{
-    margin:0 20px;
-}
-
-
-.Button{
-    padding:10px 15px;
-    border-radius: 5px;
-    border: none;
-    background-color:red;
+.homeLink:hover{
+    text-decoration: none;
     color: white;
 }
 
-.Button:hover{
-    transform: scale(1.05);
+footer{
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.267);
+    color: rgba(0, 0, 0, 0.253);
 }
 
-.Button:focus{
-    box-shadow: blue;
-}
-
-.Button:active{
-    outline: none;
-    background-color:black;
-}
+.socio-icon {
+    margin: 20px 10px;
+  }
 
 
 
-#algoTypes{
+
+/* HOME PAGE */
+
+.content{
+    height: 50%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 15px;
+    text-align: center;
 }
 
-.algoType{
-
-    margin: 0px 20px;
+.algorithType{
+    margin:0.3rem;
 }
 
+
+
+/* SEARCHING AND SORTING PAGES */
+
+.main{
+    display: flex;
+    align-items: center;
+}
+
+.subDiv{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2%;
+}
+
+
+.window1{
+    width: 65%;
+}
 
 #arrayWindow{
-    height: 500px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    margin: 20px 0;
 }
-
 
 .ele{
-    display:flex;
-    align-items: flex-start;
-    justify-content: center;
-    width: 20px;
-    background-color: rgba(247, 231, 7, 0.651);
-    margin: 2px;
-    font-size: x-small;
+    width: 3%;
+    margin:0.1rem;
+    background-color:rgba(247, 231, 7, 0.651);
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: bold;
 }
 
-#btnWindow{
+
+.window2{
+    width:25%;
+}
+
+.inputs{
+    margin:2% 0;
+}
+
+.key{
+    width:90%;
+}
+
+#speed{
+    width:50%;
+}
+
+.triggerBtn{
+    margin:0.2rem 0.2rem 0.2rem 0;
+}
+
+
+/* media queries */
+
+  @media(max-width:1024px){
+
+.main{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .subDiv{
+    display:flex;
     justify-content: center;
+    margin: 2%;
 }
 
-#btnWindow button{
-    margin: 0px 20px;
+.window1{
+    width: 90%;
 }
 
-#startBtn:disabled,#generateArray:disabled{
-    background-color: rgba(0, 0, 0, 0.253);
-    transform: scale(0.95);
+.ele{
+    margin:0.1rem;
+    background-color:rgba(247, 231, 7, 0.651);
+    text-align: center;
+    font-size: 0.2rem;
+}
+
+.window2{
+    width:100%;
+}
+
+.inputs{
+    margin: 2%;
+}
+
 }

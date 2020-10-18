@@ -7,30 +7,30 @@
   *************************************************
 */
 
+
 var arr = [];   //Globally declared array
 
-var speedSlider = document.getElementById("speed"); 
+var speedSlider = document.getElementById("speed"); // eventListener for taking the speed input dynamically
 var SPEED = 367-parseInt(speedSlider.value,10);
 
 speedSlider.addEventListener("change", function () {
-  SPEED = 367-parseInt(speedSlider.value,10);
-  console.log(SPEED);
+  SPEED = 367-parseInt(speedSlider.value,10);  //speed range(17ms to 350ms)
 });
 
 
-  while(arr.length < 40){
-    var r = Math.floor(Math.random() * 50) + 1;
+  while(arr.length < 30){ //generates array elements before loading of the page
+    var r = Math.floor(Math.random() * 40) + 1;
     if(arr.indexOf(r) === -1) arr.push(r);
   } 
 
-  window.onload =  async function() {
+  window.onload =  async function() {  // calls generateArray function on window load
     await generateArray();
   }
 
 
   async function generateArray(){  // generateArray function
     var eleClass = document.getElementById("div0");
-    if(eleClass!=null)
+    if(eleClass!=null) // if there already exists divisions in arrayWindow, then this condition checks and remove them and generates new array
     {
       for(var i=0; i < arr.length; i++)
       {
@@ -39,19 +39,17 @@ speedSlider.addEventListener("change", function () {
 
       arr = [];
 
-      while(arr.length < 40){
-       var r = Math.floor(Math.random() * 50) + 1;
+      while(arr.length < 30){
+       var r = Math.floor(Math.random() * 40) + 1;
        if(arr.indexOf(r) === -1) arr.push(r);
       }    
       
-      document.getElementsByClassName("heading")[0].innerHTML = "GO FOR IT !!";
-
     }
 
-    document.getElementById("generateArray").disabled = true;
+    document.getElementById("generateArray").disabled = true;  // to avoid multiple generations of array
     document.getElementById("startBtn").disabled = true;
 
-      for(var i=0;i<40;i++)
+      for(var i=0;i<30;i++)  //appends divisions to arrayWindow
     {
       let newBar = document.createElement("div");
         newBar.setAttribute("class", "ele");
@@ -61,7 +59,6 @@ speedSlider.addEventListener("change", function () {
         document.getElementById("arrayWindow").appendChild(newBar);
         document.getElementById("div"+i).innerHTML = arr[i];
         document.getElementById("div"+i).style.height = arr[i]*10+"px";
-        await new Promise((resolve,reject) => setTimeout(resolve,17));
     }
     document.getElementById("generateArray").disabled = false;
     document.getElementById("startBtn").disabled = false;
@@ -85,7 +82,6 @@ async function search()
         searchMethod = chosenMethod[i].value;
       }
     } 
-
 
   if(key==""||searchMethod==null)
   {
@@ -115,7 +111,6 @@ async function search()
   }
 
 
-  document.getElementsByClassName("heading")[0].innerHTML="PROCESSING...";
   document.getElementById("generateArray").disabled = true;
   document.getElementById("startBtn").disabled = true;
 
@@ -128,17 +123,15 @@ async function search()
       break;
     case "binarySearch":
       await helperSort();
-      verdict = await binarySearch(0,39,parseInt(key,10));
+      verdict = await binarySearch(0,29,parseInt(key,10));
       break;
     default:
       alert("please choose a method to search :)");
       break;    
  }
- 
- if(verdict==true)
-  document.getElementsByClassName("heading")[0].innerHTML="FOUND IT :)";
- else
-  document.getElementsByClassName("heading")[0].innerHTML="NOT FOUND :(";
+ if(verdict==false)
+ alert("UH OH..NOT FOUND!, Reset array and try again :)");
+
  document.getElementById("generateArray").disabled = false;
  document.getElementById("startBtn").disabled = false;
 
@@ -181,7 +174,6 @@ async function helperSort()
     return;
   }
 
-    document.getElementsByClassName("heading")[0].innerHTML="PROCESSING...";
     document.getElementById("generateArray").disabled = true;
     document.getElementById("startBtn").disabled = true;
 
@@ -209,7 +201,6 @@ async function helperSort()
         break;
     }
     console.log(arr);
-    document.getElementsByClassName("heading")[0].innerHTML = "YOU DID IT :)"
     document.getElementById("generateArray").disabled = false;
     document.getElementById("startBtn").disabled = false;
 

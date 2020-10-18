@@ -62,7 +62,7 @@ async function merge_sort(l,mid,h)    // sort and merges the smaller parts
             await new Promise((resolve, reject) => setTimeout(resolve, SPEED));
             document.getElementById("div"+i).innerHTML = arr[i];
             document.getElementById("div"+i).style.height = arr[i]*10+"px";
-            if(temp.length!=40)
+            if(temp.length!=30)
                 document.getElementById("div"+i).style.backgroundColor = "rgba(247, 231, 7, 0.651)";
             else
                 document.getElementById("div"+i).style.backgroundColor = "rgb(187, 255, 0)";

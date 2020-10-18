@@ -1,37 +1,41 @@
 <%-include("partials/header")%>
+    
 <div class="main">
-    <h3 id="homeLink"><a href="/">VISUAL TREAT</a></h3>
-    <h1 class="heading">GO FOR IT!!</h1>
-</div>
-<div id="algoTypes">
-    <div class="algoType">
-        <input type="radio" name="sortType" value="bubbleSort">
-        <label for="bubbleSort">Bubble Sort</label>
-    </div>
-    <div class="algoType">
-        <input type="radio" name="sortType" value="insertionSort">
-        <label for="insertionSort">Insertion sort</label>
-    </div>
-    <div class="algoType">
-        <input type="radio" name="sortType" value="selectionSort">
-        <label for="selectionSort">Selection sort</label>
-    </div>
-    <div class="algoType">
-        <input type="radio" id="mergeSort" name="sortType" value="mergeSort">
-        <label for="mergeSort">Merge sort(Recursive)</label>
-    </div>
-</div>
-<div id="container">
-    <div id="arrayWindow"></div> 
-</div>   
-    <div id="btnWindow">
-        <button class="Button" id="generateArray" onclick="generateArray()">Generate New Array</button> 
-        <button class="Button" id="startBtn" onclick="sort(0,39)">SORT</button>
-        <div>
-            <div>speed</div>
-            <input type="range" id="speed" name="speed" min="17" max="350">
-        </div> 
+
+    <div class="subDiv window1">
+        <div id="arrayWindow"></div>    
     </div> 
+    
+    <div class="subDiv window2">
+        <label style="font-weight: bold;">Sorting Algorithm</label>
+        <div class="inputs btn-group btn-group-toggle" data-toggle="buttons">
+            <label for="bubbleSort" class="btn btn-outline-dark">
+                <input type="radio" name="sortType" value="bubbleSort" id="bubbleSort" >Bubble
+            </label>
+            <label for="insertionSort" class="btn btn-outline-dark">
+                <input type="radio" name="sortType" value="insertionSort" id="insertionSort">Insertion
+            </label>
+            <label for="selectionSort" class="btn btn-outline-dark">
+                <input type="radio" name="sortType" value="selectionSort" id="selectionSort" >Selection
+            </label>
+            <label for="mergeSort" class="btn btn-outline-dark">
+                <input type="radio" name="sortType" value="mergeSort" id="mergeSort">Merge
+            </label>
+        </div>
+
+        <div class="inputs triger">
+            <button class="triggerBtn btn btn-primary" id="generateArray" onclick="generateArray()">Reset Array</button> 
+            <button class="triggerBtn btn btn-primary" id="startBtn" onclick="sort(0,29)">Sort</button>
+        </div>
+
+        <div class="inputs form-group">
+            <label for="speed">speed</label>
+            <input type="range" class="form-control-range" id="speed" name="speed" min="17" max="350">
+        </div>
+       
+    </div>
+    
+    </div>
 
     <%-include("script/algoScript")%>     
 <%-include("partials/footer")%>

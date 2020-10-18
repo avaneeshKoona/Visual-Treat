@@ -1,28 +1,41 @@
 <%-include("partials/header")%>
-<div class="main">
-    <h3 id="homeLink"><a href="/">VISUAL TREAT</a></h3>
-    <h1 class="heading">GO FOR IT!!</h1>
-</div>
-<div id="algoTypes">
-    <div class="algoType">
-        <input type="radio" name="searchType" value="linearSearch">
-        <label for="linear">Linear search</label>
-    </div>
-    <div class="algoType">
-        <input type="radio" name="searchType" value="binarySearch">
-        <label for="linear">Binary search</label>
-    </div>
-</div>
-    <div id="arrayWindow"></div>    
-    <div id="btnWindow">
-        <button class="Button" id="generateArray" onclick="generateArray()">Generate New Array</button> 
-        <label for="key">key</label><input type="text" name="key" id="key" placeholder="key to search [1,50]"> 
-        <button class="Button" id="startBtn" onclick="search()">Search</button>
-        <div>
-            <div>speed</div>
-            <input type="range" id="speed" name="speed" min="17" max="350">
-        </div> 
+    
+    <div class="main">
+      
+    <div class="subDiv window1">
+        <div id="arrayWindow"></div>    
     </div> 
 
+    <div class="subDiv window2">
+    <label for="searchTypes" style="font-weight: bold;">Search Algorithm</label>
+        <div class="inputs btn-group btn-group-toggle" data-toggle="buttons">
+            <label for="linearSearch" class="btn btn-outline-dark">
+                <input type="radio" name="searchType" value="linearSearch" id="linearSearch" >Linear
+            </label>
+            <label for="binarySearch" class="btn btn-outline-dark">
+                <input type="radio" name="searchType" value="binarySearch" id="binarySearch">Binary
+            </label>
+        </div>
+    
+        <div class="inputs key input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Key</span>
+            </div>
+            <input type="text" class="form-control" id="key" placeholder="key to search [1,50]">
+        </div>
+
+        <div class="inputs triger">
+            <button class="triggerBtn btn btn-primary" id="generateArray" onclick="generateArray()">Reset Array</button> 
+            <button class="triggerBtn btn btn-primary" id="startBtn" onclick="search()">Search</button>
+        </div>
+
+        <div class="inputs form-group">
+            <label for="speed">speed</label>
+            <input type="range" class="form-control-range" id="speed" name="speed" min="17" max="350">
+        </div>   
+        
+    </div>
+
+    </div>
     <%-include("script/algoScript")%>     
 <%-include("partials/footer")%>
