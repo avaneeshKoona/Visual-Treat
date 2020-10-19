@@ -8,6 +8,21 @@
 */
 
 
+document.onreadystatechange = function() { 
+            if (document.readyState !== "complete") { 
+                document.querySelector( 
+                  "body").style.visibility = "hidden"; 
+                document.querySelector( 
+                  "#loaders").style.visibility = "visible"; 
+            } else { 
+                document.querySelector( 
+                  "#loaders").style.display = "none"; 
+                document.querySelector( 
+                  "body").style.visibility = "visible"; 
+            } 
+        };
+
+
 var arr = [];   //Globally declared array
 
 var speedSlider = document.getElementById("speed"); // eventListener for taking the speed input dynamically

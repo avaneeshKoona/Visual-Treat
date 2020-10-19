@@ -29,11 +29,14 @@ header{
     width: 100%;
     padding:2%;
     background-color: rgba(0, 0, 0, 0.267);
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.089);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.048);
 }
+
+
 
 header h1{
     font-size: 1.5rem;
+    margin: 0;
 }
 
 .homeLink{
@@ -49,17 +52,47 @@ header h1{
     color: white;
 }
 
+
+#loaders{ 
+    border: 12px solid #f3f3f3; 
+    border-radius: 50%; 
+    border-top: 12px solid #444444; 
+    width: 70px; 
+    height: 70px; 
+    animation: spin 1s linear infinite; 
+} 
+  
+@keyframes spin { 
+    100% { 
+        transform: rotate(360deg); 
+    } 
+} 
+  
+.centers{ 
+    position: absolute; 
+    top: 0; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    margin: auto; 
+} 
+
 footer{
     width: 100%;
     text-align: center;
-    font-weight: bold;
     background-color: rgba(0, 0, 0, 0.267);
-    color: rgba(0, 0, 0, 0.253);
+    color: rgba(0, 0, 0, 0.432);
 }
 
 .socio-icon {
-    margin: 20px 10px;
+    margin: 10px 10px;
+    color:rgba(0, 0, 0, 0.432);
   }
+
+.socio-icon:hover{
+    color:black;
+  }
+
 
 
 
@@ -137,6 +170,7 @@ footer{
 }
 
 
+
 /* media queries */
 
   @media(max-width:1024px){
@@ -165,11 +199,12 @@ footer{
 }
 
 .window2{
-    width:100%;
+    width:90%;
+
 }
 
 .inputs{
-    margin: 2%;
+    margin: 2% 0;
 }
 
 }

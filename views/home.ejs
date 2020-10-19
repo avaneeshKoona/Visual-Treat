@@ -6,4 +6,19 @@
             <a class="btn btn-outline-dark btn-lg algorithType" href="/sort">SORTING</a>
         </div>
     </div>
+    <script>
+                document.onreadystatechange = function() { 
+            if (document.readyState !== "complete") { 
+                document.querySelector( 
+                  "body").style.visibility = "hidden"; 
+                document.querySelector( 
+                  "#loaders").style.visibility = "visible"; 
+            } else { 
+                document.querySelector( 
+                  "#loaders").style.display = "none"; 
+                document.querySelector( 
+                  "body").style.visibility = "visible"; 
+            } 
+        };
+    </script>
 <%-include("partials/footer")%>
